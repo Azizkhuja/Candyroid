@@ -16,7 +16,7 @@ class HadithViewModel(private val repository: HadithRepository) : ViewModel() {
     private val _error = MutableStateFlow<String?>(null)
     val error: StateFlow<String?> = _error
 
-    fun fetchRandomHadithList(count: Int = 50) {
+    fun fetchRandomHadithList(count: Int = 3) {
         viewModelScope.launch {
             _isLoading.value = true
             _error.value = null
@@ -24,6 +24,23 @@ class HadithViewModel(private val repository: HadithRepository) : ViewModel() {
                 _hadithList.value = repository.getMultipleRandomHadiths(count)
             } catch (e: Exception) {
                 _error.value = "Error fetching random hadith list: ${e.message}"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
+    private val _randomHadith = MutableStateFlow<HadithResponse?>(null)
+    val randomHadith: StateFlow<HadithResponse?> = _randomHadith
+
+    fun fetchSingleRandomHadith() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            _error.value = null
+            try {
+                _randomHadith.value = repository.getMultipleRandomHadiths(1).firstOrNull()
+            } catch (e: Exception) {
+                _error.value = "Error fetching random hadith: ${e.message}"
             } finally {
                 _isLoading.value = false
             }

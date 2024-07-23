@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
 //                    HadithScreen(viewModel = viewModel)
                     val repository = HadithRepository(RetrofitClient.instance)
                     val viewModel = HadithViewModel(repository)
-                    HadithListScreen(viewModel)
+                    HadithApp(viewModel)
                 }
             }
         }
