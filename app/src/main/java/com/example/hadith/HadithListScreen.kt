@@ -8,13 +8,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -26,14 +23,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.material.icons.filled.ShoppingCart
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HadithListScreen(
-    viewModel: HadithViewModel,
-    onNavigateToRandomHadith: () -> Unit
-) {
+fun HadithListScreen(viewModel: HadithViewModel) {
     val hadithList by viewModel.hadithList.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val error by viewModel.error.collectAsState()
@@ -44,12 +37,7 @@ fun HadithListScreen(
 
     Column(modifier = Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text("50 Random Hadiths") },
-            actions = {
-                IconButton(onClick = onNavigateToRandomHadith) {
-                    Icon(Icons.Default.ShoppingCart, contentDescription = "Random Hadith")
-                }
-            }
+            title = { Text("List of Hadiths") }
         )
 
         if (isLoading) {

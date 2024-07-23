@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import com.example.hadith.ui.theme.HadithTheme
 
@@ -20,10 +19,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-//                    val repository = HadithRepository(RetrofitClient.instance)
-//                    val viewModel = HadithViewModel(repository)
-//
-//                    HadithScreen(viewModel = viewModel)
                     val repository = HadithRepository(RetrofitClient.instance)
                     val viewModel = HadithViewModel(repository)
                     HadithApp(viewModel)

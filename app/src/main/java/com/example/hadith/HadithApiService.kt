@@ -2,11 +2,13 @@ package com.example.hadith
 
 import retrofit2.http.GET
 import retrofit2.http.Headers
-import retrofit2.http.Path
 
 interface HadithApiService {
+    companion object {
+        const val X_RAPID_API_KEY = BuildConfig.X_RAPID_API_KEY
+    }
     @Headers(
-        "X-RapidAPI-Key: 5275a8e1dcmshe6cde61534690eap13333ejsncffe8ac2d285",
+        "X-RapidAPI-Key: $X_RAPID_API_KEY",
         "X-RapidAPI-Host: hadith2.p.rapidapi.com"
     )
     @GET("random")
