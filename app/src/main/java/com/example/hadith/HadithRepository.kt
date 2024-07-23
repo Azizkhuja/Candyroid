@@ -1,7 +1,9 @@
 package com.example.hadith
 
 class HadithRepository(private val apiService: HadithApiService) {
-    suspend fun getRandomHadith(): HadithResponse {
-        return apiService.getRandomHadith()
+    suspend fun getMultipleRandomHadiths(count: Int): List<HadithResponse> {
+        return (1..count).map {
+            apiService.getRandomHadith()
+        }
     }
 }

@@ -20,10 +20,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+//                    val repository = HadithRepository(RetrofitClient.instance)
+//                    val viewModel = HadithViewModel(repository)
+//
+//                    HadithScreen(viewModel = viewModel)
                     val repository = HadithRepository(RetrofitClient.instance)
                     val viewModel = HadithViewModel(repository)
-
-                    HadithScreen(viewModel = viewModel)
+                    HadithListScreen(viewModel)
                 }
             }
         }
